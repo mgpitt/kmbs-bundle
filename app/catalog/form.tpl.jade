@@ -1,0 +1,16 @@
+.row
+  .col-xs-6
+    
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        .row
+          .col-xs-8
+            h4.panel-title {{vm.form.name}}
+          .col-xs-4
+            .btn-group.pull-right
+              a.btn.btn-sm.btn-primary(data-ui-sref="catalog") Back
+              a.btn.btn-sm.btn-primary(data-ui-sref="catalog.form({formSlug: vm.form.slug})",data-ui-sref-opts="{reload:true}") Restart
+      .panel-body
+        #formContainer

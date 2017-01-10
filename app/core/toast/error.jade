@@ -1,0 +1,7 @@
+div
+  p {{options.message}}
+  p(data-ng-if="data.error && !options.overwrite") {{data.error}}
+  div(data-ng-if="data.errors")
+    div(data-ng-repeat="(name, errors) in data.errors")
+      ul
+        li(data-ng-repeat="error in errors") {{error}}

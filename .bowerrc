@@ -1,0 +1,6 @@
+{
+  "directory": "thirdparty",
+  "ignoredDependencies": [
+    "bootstrap"
+  ]
+}

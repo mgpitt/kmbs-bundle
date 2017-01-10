@@ -1,0 +1,14 @@
+a.back-queue.visible-sm.visible-xs(href="",data-ng-click="list.showList()")
+  span.fa.fa-fw.fa-arrow-left
+  | Back to Queue
+.queue-details
+  ul.nav.nav-tabs
+    li(role="presentation",data-ui-sref-active="active")
+      a(data-ui-sref="queue.by.details.summary") Summary
+    li(role="presentation",data-ui-sref-active="active")
+      a(data-ui-sref="queue.by.details.work") Work
+    li(role="presentation",data-ui-sref-active="active")
+      a(data-ui-sref="queue.by.details.assignment") Assignment
+    li(data-ng-if="queue.loading")
+      span.fa.fa-fw.fa-3x.fa-spin.fa-circle-o-notch
+  div(data-ui-view="")

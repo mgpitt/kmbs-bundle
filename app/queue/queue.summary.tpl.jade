@@ -1,0 +1,36 @@
+.panel.panel-primary
+  .panel-heading
+    h5.panel-title {{vm.item.label}}
+  .panel-body
+    .row
+      .col-xs-6
+        span.fa.fa-fw.fa-flag
+        | &nbsp;{{queue.friendlyStatus(vm.item)}}
+      .col-xs-6
+        .ellipsis
+          span.fa.fa-fw.fa-users
+          | &nbsp;{{queue.friendlyAssignedGroup(vm.item)}}
+    .row
+      .col-xs-6
+        span.fa.fa-fw.fa-calendar
+        | &nbsp;
+        span(data-time-ago="queue.friendlyDueDate(vm.item)",data-ng-class="{'text-danger': queue.isOverdue(queue.friendlyDueDate(vm.item))}")
+      .col-xs-6
+        .ellipsis
+          span.fa.fa-fw.fa-user
+          | &nbsp;{{queue.friendlyAssignedName(vm.item)}}
+    .row(data-ng-if="queue.hasDetails(vm.item)")
+      .col-xs-12
+        .well.well-details {{queue.friendlyDetails(vm.item)}}
+.row(data-ng-if="details.isMine()")
+  .col-xs-6
+    button.btn.btn-primary.btn-block(data-ui-sref="queue.by.details.work") Work It
+  .col-xs-6
+    button.btn.btn-warning.btn-block(data-ui-sref="queue.by.details.assignment") Reassign It
+.row(data-ng-if="!details.isMine()")
+  .col-xs-6
+    button.btn.btn-primary.btn-block(data-ng-click="details.grabIt()") Grab It
+  .col-xs-6
+    button.btn.btn-warning.btn-block(data-ui-sref="queue.by.details.assignment") Assign It
+  
+    

@@ -1,0 +1,33 @@
+.setup-tab
+   .row
+      .col-xs-12
+         .panel.panel-primary
+            .panel-heading
+               h3.panel-title Queue Filter Configuration
+            .panel-body
+               .row
+                  .col-xs-12
+                     ul(dnd-list="vm.queueFilterAttribute.values")
+                        li.filter-item(
+                        data-ng-repeat="filter in vm.queueFilterAttribute.values",
+                        dnd-draggable="filter",
+                        dnd-moved="vm.setup.removeFilter($index)",
+                        dnd-effect-allowed="move"
+                        )
+                           | {{filter.name}}
+                           .filter-actions.btn-group.pull-right
+                              a.btn.btn-xs.btn-primary(href="",data-ng-click="vm.setup.editFilter(filter)")
+                                 span.fa.fa-fw.fa-pencil
+                              a.btn.btn-xs.btn-danger(href="",data-ng-click="vm.setup.removeFilter($index)")
+                                 span.fa.fa-fw.fa-minus
+                        li
+                           .row
+                              .col-xs-11
+                                 input.form-control(type="text",data-ng-model="vm.setup.tmpFilterName",placeholder="Queue Filter Name")
+                              .col-xs-1
+                                 a.btn.btn-xs.btn-success(href="",data-ng-click="vm.setup.addFilter()")
+                                    i.fa.fa-fw.fa-plus
+   .row
+      .col-xs-offset-10.col-xs-2
+         a.btn.btn-default.btn-block(href="",data-ng-click="vm.saveKapp()",data-ng-disabled="vm.setup.isSetupValid()") Save
+

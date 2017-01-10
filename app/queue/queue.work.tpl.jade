@@ -1,0 +1,8 @@
+.panel.panel-primary
+  .panel-heading
+    h5.panel-title {{vm.item.label}}
+  .panel-body
+    div(data-ng-if="!details.isMine()")
+      h4 Current {{queue.queueType}} is not assigned to you.
+      a.btn.btn-block.btn-primary(data-ng-click="details.grabIt()") Grab It
+    #workContainer

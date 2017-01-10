@@ -1,0 +1,7 @@
+.panel.panel-primary
+  .panel-heading
+    h4.panel-title
+      a.btn.btn-sm.btn-primary(href="",data-ui-sref="catalog.form({formSlug: form.slug})") View
+      | &nbsp;{{form.name}}
+  .panel-body
+    p {{form.description || 'This is a ' + form.type + ' form.'}}

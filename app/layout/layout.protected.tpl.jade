@@ -1,0 +1,24 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button(type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(data-ui-sref="queue.by({filterName: '__default__'})",data-ui-sref-opts="{reload:true}") {{layout.kapp.name}}
+    div.navbar-collapse.collapse#navbar
+      ul.nav.navbar-nav
+        li(data-ng-if="layout.isSetupVisible()",data-ng-class="{'active': layout.isParentActive('setup')}")
+          a(data-ui-sref="setup") Queue Setup
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle(href="",data-toggle="dropdown",role="button",aria-haspopup="true",aria-expanded="false")
+            i.hidden-xs.fa.fa-fw.fa-th
+            i.visible-xs Kapps
+          ul.dropdown-menu
+            li(data-ng-repeat="kapp in layout.kapps")
+              a(href="{{layout.kappUrl(kapp)}}") {{kapp.name}}
+main
+  div.container(data-ui-view="")
+

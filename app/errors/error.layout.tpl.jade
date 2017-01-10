@@ -1,0 +1,27 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      //button(type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href="") Oh no!
+    //div.navbar-collapse.collapse#navbar
+      ul.nav.navbar-nav
+        li(data-ng-class="{'active': layout.isParentActive('queue')}")
+          a(data-ui-sref="queue.by({filterName: '__default__'})") Queue
+        li(data-ng-class="{'active': layout.isParentActive('catalog')}")
+          a(data-ui-sref="catalog") Catalog
+        li(data-ng-if="layout.isSpaceAdmin()",data-ng-class="{'active': layout.isParentActive('setup')}")
+          a(data-ui-sref="setup") Queue Setup
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle(href="",data-toggle="dropdown",role="button",aria-haspopup="true",aria-expanded="false")
+            i.fa.fa-fw.fa-th
+          ul.dropdown-menu
+            li(data-ng-repeat="kapp in layout.kapps")
+              a(href="{{layout.kappUrl(kapp)}}") {{kapp.name}}
+main
+  div.container(data-ui-view="")
+      

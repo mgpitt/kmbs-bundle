@@ -1,0 +1,9 @@
+.container
+  .row(data-ng-if="!vm.isChildActive()")
+    .col-xs-s12.col-md-6(data-ng-repeat="form in vm.forms")
+      div(data-ng-include="'catalog/catalog.card.tpl.html'")
+  .row
+    .col-xs-3(data-ng-if="vm.isChildActive()")
+      div(data-ng-repeat="form in vm.forms",data-ng-include="'catalog/catalog.card.tpl.html'")
+    .col-xs-9
+      div(data-ui-view="")

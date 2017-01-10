@@ -1,0 +1,32 @@
+.row
+  .col-xs-12
+    h4 Assignment
+    .list-group
+      .list-group-item(data-ng-repeat="group in vm.groups")
+        span.fa.fa-fw.fa-users
+        | &nbsp;{{group}}
+        a.btn.btn-sm.btn-default.pull-right(data-ng-click="vm.startMidGroupAssignment($index)") Reassign
+      .list-group-item(data-ng-if="vm.memberId")
+        ng-letter-avatar(data="{{vm.memberId}}" height="14px" width="14px" shape="round" fontsize="12")
+        | &nbsp;{{vm.memberId}}
+        a.btn.btn-sm.btn-default.pull-right(data-ng-click="vm.startMemberAssignment()") Reassign
+      .list-group-item(data-ng-if="vm.canAssignGroup() && vm.groups.length < 1")
+        a.btn.btn-default.btn-block(data-ng-click="vm.startGroupAssignment()") Start Group Assignment
+      .list-group-item(data-ng-if="vm.canAssignGroup() && vm.groups.length > 0")
+        a.btn.btn-default.btn-block(data-ng-click="vm.startMidGroupAssignment(vm.groups.length)") Continue Group Assignment
+      .list-group-item(data-ng-if="vm.state.assigningGroups || vm.state.assigningMembers")
+        .list-group
+          .list-group-item(data-ng-repeat="group in vm.groupsToAssign")
+            span.fa.fa-fw.fa-users
+            | {{group.values['Display Name']}}
+            a.btn.btn-sm.btn-default.pull-right(data-ng-click="vm.startGroupAssignment(group.values['Name'])") Choose
+          .list-group-item(data-ng-repeat="member in vm.membersToAssign")
+            ng-letter-avatar(data="{{vm.getNameFromMember(member)}}" height="14px" width="14px" shape="round" fontsize="12")
+            | {{vm.getNameFromMember(member)}}
+            a.btn.btn-sm.btn-default.pull-right(data-ng-click="vm.selectMember(member)") Choose
+      .list-group-item(data-ng-if="!vm.canAssignGroup() && vm.state.showMembersButton")
+        a.btn.btn-default.btn-block(data-ng-click="vm.startMemberAssignment()") Start Member Assignment
+    .pull-right(data-ng-if="vm.state.assigningGroups || vm.state.assigningMembers")
+      a.btn.btn-sm.btn-link(data-ng-click="vm.cancel()") Cancel
+      a.btn.btn-sm.btn-default(data-ng-click="vm.save()") Done
+      

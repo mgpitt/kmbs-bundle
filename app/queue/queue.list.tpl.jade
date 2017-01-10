@@ -1,0 +1,37 @@
+.row
+  .col-sm-12.col-md-4(data-ng-class="{'hidden-xs': list.shouldHideList(), 'hidden-sm': list.shouldHideList() }")
+    .list-group
+      a.list-group-item(data-ng-if="!list.loading",data-ng-repeat="item in list.items",data-ng-click="list.selectItem(item)",data-ng-class="{'active-item':list.isActiveItem(item)}")
+        h5 {{item.label}}
+        .row
+          .col-xs-6
+            span.fa.fa-fw.fa-flag
+            | &nbsp;{{queue.friendlyStatus(item)}}
+          .col-xs-6
+            .ellipsis
+              span.fa.fa-fw.fa-users
+              | &nbsp;{{queue.friendlyAssignedGroup(item)}}
+        .row
+          .col-xs-6
+            span.fa.fa-fw.fa-calendar
+            | &nbsp;
+            span(data-time-ago="queue.friendlyDueDate(item)",data-ng-class="{'text-danger': queue.isOverdue(queue.friendlyDueDate(item))}")
+          .col-xs-6
+            .ellipsis
+              span.fa.fa-fw.fa-user
+              | &nbsp;{{queue.friendlyAssignedName(item)}}
+        .row
+          .col-xs-12
+            p.well-details {{queue.friendlySummary(item)}}
+      .list-group-item(data-ng-if="list.items.length < 1") There are no items in this queue.
+      .list-group-item(data-ng-if="list.hasMorePages()")
+        ul.pager.queue-pager
+          li
+            a(data-ng-if="list.prevPageTokens.length > 0",data-ng-click="list.prevPage()") Previous
+          li
+            a(data-ng-if="list.nextPageToken",data-ng-click="list.nextPage()") Next
+  .col-sm-12.col-md-8
+    div(data-ui-view="" data-ng-class="{'hidden-xs': !list.shouldHideList(), 'hidden-sm': !list.shouldHideList() }")
+      .panel.panel-default
+        .panel-body
+          | Please select an item from the list.

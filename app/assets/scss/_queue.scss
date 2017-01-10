@@ -1,0 +1,46 @@
+html,
+body{
+  background-color: #f8f8f8;
+}
+.navbar-default{
+  background-color: #fff;
+}
+.setup-tab {
+  margin-top: 1em;
+}
+
+.list-group-item:first-child,
+.list-group-item:last-child{
+border-radius: 0;
+}
+.active-item {
+  border-left: 2px solid #337ab7;
+  background-color: #F0F0F0;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.well-details {
+  white-space: pre-wrap;
+}
+.list-group{
+  margin: 1em 0;
+}
+.back-queue{
+  margin: 1em 0;
+}
+.queue-details{
+  padding: 1em;
+  background-color: #fff;
+  .nav-pills,
+  .nav-tabs{
+    margin-bottom: 1em;
+  }
+}
+select, select.form-control{
+  padding-left: 1em;
+}

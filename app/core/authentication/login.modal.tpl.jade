@@ -1,0 +1,19 @@
+form.form-horizontal(name="loginModalForm",data-ng-submit="vm.submit()")
+  .modal-content
+    .modal-header
+      h4.modal-title Login
+
+    .modal-body
+      .row
+        .col-xs-offset-1.col-xs-10
+          .alert.alert-danger(ng-if="vm.hasError") {{vm.errorMsg}}
+          
+          .form-group
+            label.control-label(for="_username") Username
+            input.form-control#_username(type="text",name="_username",data-ng-model="_username")
+
+          .form-group
+            label.control-label(for="_password") Password
+            input.form-control#_password(type="password",name="_password",data-ng-model="_password")
+    .modal-footer
+      button.btn.btn-default(type="submit") Login

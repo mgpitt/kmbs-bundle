@@ -1,0 +1,19 @@
+section#login-content
+  .container-fluid
+    .row
+      .col-xs-12
+        #login-box
+          .row
+            .col-xs-12
+              #login-box-inner
+                h2 Sign In
+                .alert.alert-danger(data-ng-if="vm.hasError")
+                  | {{vm.errorMsg}}
+                form(name="loginForm",data-ng-submit="vm.submit()",novalidate="")
+                  .form-group
+                    label.control-label(for="_username") Username
+                    input.form-control#_username(type="text",name="_username",data-ng-model="vm._username",required="")
+                  .form-group
+                    label.control-label(for="_password") Password
+                    input.form-control#_password(type="password",name="_password",data-ng-model="vm._password",required="")
+                  button.btn.btn-default(type="submit",data-ng-disabled="vm.disabled") Sign In

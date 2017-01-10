@@ -1,0 +1,18 @@
+.row
+  .col-xs-12
+    h3 Kapp Setup
+
+    .alert.alert-danger(data-ng-if="vm.missingAdminKapp") The Admin Kapp must be installed to use this!
+
+    .alert(data-ng-repeat="attribute in vm.missingAttributes" data-ng-class="{'alert-warning':attribute.created===false, 'alert-success':attribute.created===true}")
+      div(data-ng-if="attribute.created===false") Missing definition: {{attribute.name}}
+      div(data-ng-if="attribute.created===true") Definition created: {{attribute.name}}
+
+    .setup-tabs(data-ng-if="vm.readyToEdit")
+      uib-tabset(active="active")
+        uib-tab(heading="Details")
+          div(data-ng-include="'queue/setup/_queue.setup.details.tpl.html'")
+        uib-tab(heading="Filters")
+          div(data-ng-include="'queue/setup/_queue.setup.filters.tpl.html'")
+        uib-tab(heading="Form Generator")
+          div(data-ng-include="'queue/setup/_queue.setup.form.tpl.html'")
